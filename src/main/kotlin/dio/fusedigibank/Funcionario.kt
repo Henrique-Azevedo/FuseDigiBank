@@ -1,13 +1,16 @@
 package dio.fusedigibank
 
-import java.math.BigDecimal
-
 abstract class Funcionario(
     nome: String,
     cpf: String,
-    val salario: BigDecimal
-) : Pessoa(nome, cpf)  {
+    var salario: Double
+) : Pessoa(nome, cpf) {
+    abstract fun calculoAuxilio(): Double
 
-    abstract fun calculoAuxilio():
-
+    override fun toString(): String = """
+        nome: $nome
+        cpf: $cpf
+        salario: $salario
+        auxilio: ${calculoAuxilio()}
+    """.trimIndent()
 }
